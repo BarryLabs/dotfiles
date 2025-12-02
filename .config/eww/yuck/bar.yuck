@@ -1,0 +1,157 @@
+(defwindow bar
+  :monitor 0
+  :exclusive "true"
+  :stacking "fg"
+  :geometry (geometry
+              :anchor "top center"
+              :x "0px"
+              :y "2px"
+              :width "99%"
+              :height "10px")
+  (bar)
+)
+
+(defwindow tray
+    :monitor 0
+    :stacking "overlay"
+    :geometry (geometry 
+                    :anchor "top left"
+                    :width "4px"
+                    :height "4px"
+                    :x "82%"
+                )
+    :namespace "eww"
+    (tray)
+)
+
+(defwidget bar []
+    (centerbox :orientation "h" :class "bar"
+        (box :class "left" :orientation "h" :space-evenly false :halign "start" :hexpand false :vexpand false
+            (menu)
+            (time)
+        )
+        (box :class "center" :orientation "h" :space-evenly false :halign "center" :hexpand false :vexpand false
+            (workspaces)
+        )
+        (box :class "right" :orientation "h" :space-evenly false :halign "end" :hexpand false :vexpand false
+            ;; System
+            (tray_button)
+            (cpu_usage)
+            (ram_usage)
+            (disk_usage)
+            ;; ----
+            (powermenu)
+        )
+    )
+)
+
+(defwidget menu []
+  (box :orientation "h"
+       :space-evenly "false"
+       :class "module"
+       :halign "start"
+    (button :class "menu_btn"
+            :tooltip "System Menu"
+            :onclick "<launcher>"
+            "λ"
+    )
+  )
+)
+
+(defwidget workspaces []
+  (eventbox :onscroll "scripts/change_active_workspace.sh {} ${current_workspace}"
+    (box :orientation "h" :space-evenly false :class "workspaces" :hexpand true
+      (for workspace in workspaces
+        (button 
+          :class "workspace ${current_workspace == workspace.id ? "current" : ""}" 
+          :onclick "hyprctl dispatch workspace ${workspace.id}" 
+          ""
+        )
+      )
+    )
+  )
+)
+
+(defwidget cpu_usage []
+  (box :class "module" :space-evenly "false" :orientation "h" :spacing "1" :halign "center"
+    (label :class "cpu" :text "  ${cpu_usage}")
+  )
+)
+
+(defwidget ram_usage []
+  (box :class "module" :space-evenly "false" :orientation "h" :spacing "1" :halign "center"
+    (label :class "ram" :text "󰑭  ${ram_usage}")
+  )
+)
+
+(defwidget disk_usage []
+  (box :class "module" :space-evenly "false" :orientation "h" :spacing "1" :halign "center"
+    (label :class "disk" :text "  ${disk_usage}%")
+  )
+)
+
+(defwidget time []
+  (eventbox 
+    (box :class "module" :space-evenly "false" :orientation "h" :spacing "3" 
+        (label :text "󱑂 " :class "time")
+        (label :text h :class "time" )
+        (label :text ":" :class "time" )
+        (label :text m :class "time")
+    )
+  )
+)
+
+(defwidget sys_menu []
+  (box :class "module" :space-evenly "false" :orientation "h"
+    (button :class "sys_btn" :onclick "eww -c ~/.config/eww open --toggle actions"
+      (label :class "sys_btn_label" :text "Sys")
+    )
+  )
+)
+
+(defwidget tray []
+    (revealer :transition "slideup" :reveal {open_tray} :duration {ANIM_DURATION}
+        (box :class "tray_box" :orientation "h" :space-evenly false
+            (systray :hexpand true :halign "center" :pack-direction "left")
+        )
+    )
+)
+
+(defwidget tray_button []
+    (button :class "tray_button" :onclick "scripts/toggle_tray.sh" "")
+)
+
+(defwidget powermenu []
+  (box :orientation "h"
+       :space-evenly false
+       :class "module"
+       :halign "end"
+    (button :class "powermenu_btn"
+            :tooltip "Toggle Power Menu"
+            :onclick "wlogout"
+            "☣"
+    )
+  )
+)
+
+;; -----------------------
+
+;;(defwidget actions []
+;;  (box :class "actions"
+;;       :orientation "v"
+;;       :space-evenly false
+;;       :spacing 10
+    ;;(user)
+    ;;(sysbuttons)
+    ;;(music :album {pctl_sub["xesam:album"]}
+;;           :title {pctl_sub["xesam:title"]}
+;;           :image_accent {pctl_sub["image_accent"]}
+;;           :button_accent {pctl_sub["button_accent"]}
+;;           :button_text {pctl_sub["button_text"]}
+;;           :cover {pctl_sub["mpris:artUrl"]}
+;;           :artist {pctl_sub["xesam:artist"]}
+;;           :player "${pctl_sub.player}")
+    ;;(controls)
+;;  )
+;;)
+

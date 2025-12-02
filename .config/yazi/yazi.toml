@@ -1,0 +1,7 @@
+[mgr]
+sort_by = "alphabetical"
+sort_reverse = false
+show_hidden = true
+show_symlink = true
+linemode = "mtime"
+ratio = [1, 4, 3]
