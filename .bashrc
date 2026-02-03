@@ -4,8 +4,8 @@ VISUAL="nvim"
 TERMINAL="foot"
 
 # Multi-Color
-force_color_prompt=yes
 color_prompt=yes
+force_color_prompt=yes
 
 # Funny Arrow Prompt
 PS1=$'\uf0a9 '
@@ -26,12 +26,6 @@ if command -v eza &>/dev/null; then
   alias lt='eza --tree --level=2 --long --icons --
 git'
   alias lta='lt -a'
-fi
-
-# Golang
-if command -v go &>/dev/null; then
-  export GOMODCACHE="~/.go"
-  export GOPATH="~/.go"
 fi
 
 # Zoxide

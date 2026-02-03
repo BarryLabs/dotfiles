@@ -8,3 +8,4 @@
 
 set -gx EDITOR nvim
 zoxide init fish | source
+direnv hook fish | source

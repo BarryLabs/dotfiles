@@ -30,7 +30,7 @@ require("lazy").setup({
 		version = false, -- always use the latest git commit
 		-- version = "*", -- try installing the latest stable version for plugins that support semver
 	},
-	install = { colorscheme = { "tokyonight" } },
+	install = { colorscheme = { "catppuccin-mocha" } },
 	checker = {
 		enabled = true, -- check for plugin updates periodically
 		notify = false, -- notify on update
@@ -40,9 +40,9 @@ require("lazy").setup({
 			-- disable some rtp plugins
 			disabled_plugins = {
 				"gzip",
-				-- "matchit",
-				-- "matchparen",
-				-- "netrwPlugin",
+				"matchit",
+				"matchparent",
+				"netrwPlugin",
 				"tarPlugin",
 				"tohtml",
 				"tutor",

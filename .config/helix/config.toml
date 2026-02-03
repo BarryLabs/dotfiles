@@ -11,3 +11,7 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[language-server.qmlls]
+args = ["-E"]
+command = "qmlls"

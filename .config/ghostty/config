@@ -1,4 +1,6 @@
+shell-integration = bash
 shell-integration = fish
+shell-integration = zsh
 
 font-family = "Hack Nerd Font"
 theme = "Catppuccin Mocha"

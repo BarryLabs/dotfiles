@@ -40,6 +40,28 @@ layout {
       plugin location="zellij:compact-bar"
     }
   } 
+  tab name="Europa" {
+    pane {
+      pane
+    }
+    floating_panes {
+      pane {
+        x "5%"
+        y "5%"
+        width "75%"
+        height "75%"
+      }
+      pane {
+        x "75%"
+        y "75%"
+        width "75%"
+        height "75%"
+      }
+    }
+    pane size=1 borderless=true {
+      plugin location="zellij:compact-bar"
+    }
+  } 
   tab name="Symphony" {
     floating_panes {
       pane command="htop" {
