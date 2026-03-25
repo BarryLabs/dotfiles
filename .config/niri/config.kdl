@@ -8,6 +8,10 @@ spawn-at-startup "wl-paste" "-t" "image" "--watch" "cliphist" "store" "--no-pers
 spawn-at-startup "wl-paste" "-t" "text" "--watch" "cliphist" "store" "--no-persist" "--max-items=100"
 spawn-at-startup "noctalia-shell"
 
+output "DP-2" {
+	mode "3440x1440@180.000"
+}
+
 input {
 	keyboard {
 		numlock
@@ -217,7 +221,6 @@ window-rule {
     match title="Special Offers"
     match title="Friends List"
     match title="Steam Settings"
-    // match app-id="steam" title="Brawlhalla"
     match app-id="blueman-manager"
     match title="Bluetooth"
     match app-id=r#"^blueberry*"#
