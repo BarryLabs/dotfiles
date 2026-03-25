@@ -4,7 +4,3 @@ shell-integration = zsh
 
 font-family = "Hack Nerd Font"
 theme = "Catppuccin Mocha"
-
-window_opacity = 0.9
-window_blur = true
-
