@@ -9,10 +9,10 @@ input_path  = '~/.config/matugen/templates/btop.theme'
 output_path = '~/.config/btop/themes/matugen.theme'
 post_hook = 'pkill -USR2 btop || true'
 
-[templates.cava]
-input_path  = "~/.config/matugen/templates/cava-colors.ini"
-output_path = "~/.config/cava/matugen"
-post_hook = 'pkill -USR1 cava'
+# [templates.cava]
+# input_path  = "~/.config/matugen/templates/cava.ini"
+# output_path = "~/.config/cava/matugen"
+# post_hook = 'pkill -USR1 cava'
 
 [templates.ghostty]
 input_path  = "~/.config/matugen/templates/ghostty"
@@ -24,18 +24,14 @@ input_path  = "~/.config/matugen/templates/helix.toml"
 output_path = '~/.config/helix/themes/matugen.toml'
 
 # [templates.mango]
-# input_path = 'path/to/template'
+# input_path = '~/.config/matugen/templates/mango.conf'
 # output_path = '~/.config/mango/colors.conf'
 # post_hook = 'mmsg -d reload_config' 
 
 [templates.niri]
-input_path = '~/.config/matugen/templates/niri-colors.kdl'
+input_path = '~/.config/matugen/templates/niri.kdl'
 output_path = '~/.config/niri/colors.kdl'
 post_hook = 'niri msg action load-config-file'
-
-# [templates.obs]
-# input_path = '~/.config/matugen/templates/'
-# output_path = '~/.config/obs-studio/themes/matugen.obt'
 
 [templates.obsidian]
 input_path = '~/.config/matugen/templates/obsidian.css'
@@ -46,7 +42,7 @@ input_path = '~/.config/matugen/templates/quickshell.qml'
 output_path = '~/.local/state/quickshell/colors.json'
 
 [templates.starship]
-input_path = '~/.config/matugen/templates/starship-colors.toml'
+input_path = '~/.config/matugen/templates/starship.toml'
 output_path = '~/.config/starship.toml'
 
 [templates.steam]
@@ -59,10 +55,10 @@ input_path = '~/.config/matugen/templates/midnight-discord.css'
 output_path = '~/.config/vesktop/themes/midnight-discord.css'
 
 [templates.yazi]
-input_path = '~/.config/matugen/templates/yazi-theme.toml'
+input_path = '~/.config/matugen/templates/yazi.toml'
 output_path = '~/.config/yazi/theme.toml'
 
 [templates.zathura]
-input_path = '~/.config/matugen/templates/zathura-colors'
+input_path = '~/.config/matugen/templates/zathura'
 output_path = '~/.config/zathura/zathurarc'
 
