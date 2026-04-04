@@ -1,6 +1,13 @@
+# Shell
 shell-integration = bash
 shell-integration = fish
 shell-integration = zsh
 
+# Other
+shell-integration-features = ssh-terminfo,ssh-env
+
+theme = "Matugen"
 font-family = "Hack Nerd Font"
-theme = "Catppuccin Mocha"
+copy-on-select = clipboard
+cursor-style = block
+cursor-style-blink = true

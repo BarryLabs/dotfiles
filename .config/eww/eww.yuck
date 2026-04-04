@@ -1,4 +1,0 @@
-(include "variables.yuck")
-(include "yuck/bar.yuck")
-(include "yuck/notifications.yuck")
-;;(include "dashboard.yuck")

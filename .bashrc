@@ -1,6 +1,6 @@
 # Vars
-EDITOR="nvim"
-VISUAL="nvim"
+EDITOR="hx"
+VISUAL="hx"
 TERMINAL="foot"
 
 # Multi-Color

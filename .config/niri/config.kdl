@@ -1,14 +1,15 @@
+include "./colors.kdl"
+
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
 
-spawn-at-startup "xwayland-satellite"
-spawn-at-startup "foot" "--server"
-spawn-at-startup "systemctl" "--user" "import-environment" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "wl-paste" "-t" "image" "--watch" "cliphist" "store" "--no-persist" "--max-items=100"
 spawn-at-startup "wl-paste" "-t" "text" "--watch" "cliphist" "store" "--no-persist" "--max-items=100"
 spawn-at-startup "noctalia-shell"
+spawn-at-startup "syncthing" "serve"
 
 output "DP-2" {
+	scale 1
 	mode "3440x1440@180.000"
 }
 
@@ -67,12 +68,17 @@ gestures {
 
 animations {
 	slowdown 2.0
+	screenshot-ui-open {
+        duration-ms 300
+        curve "ease-out-quad"
+    }
 }
 
 environment {
 	DISPLAY ":0"
+    WAYLAND_DISPLAY "wayland-1"
     XCURSOR_THEME "Bibata-Modern-Classic"
-    XCURSOR_SIZE "18"
+    XCURSOR_SIZE "12"
     XDG_CURRENT_DESKTOP "Niri"
     XDG_SESSION_DESKTOP "Niri"
     XDG_SESSION_TYPE "wayland"
@@ -91,11 +97,12 @@ environment {
     GDK_BACKEND "wayland,x11,*"
     GTK_USE_PORTAL "1"
     WLR_NO_HARDWARE_CURSORS "1"
+    NIXOS_OZONE_WL "1"
 }
 
 cursor {
 	hide-when-typing
-	xcursor-size 10
+	xcursor-size 12
 	xcursor-theme "Bibata-Modern-Classic"
 }
 
@@ -112,25 +119,23 @@ overview {
 layout {
 	gaps 8
 	background-color "transparent"
-	default-column-width { proportion 0.5; }
+	default-column-width { proportion 1.0; }
 	preset-column-widths {
+		proportion 0.33333
 		proportion 0.5
-	}
-	preset-window-heights {
-		proportion 0.5
-		proportion 1.0
+		proportion 0.66667
 	}
 	border {
 		width 0.5
-		active-color "#068a50"
-		inactive-color "#1c1c1c"
-		urgent-color "#ff0060"
+		// active-color "#068a50"
+		// inactive-color "#1c1c1c"
+		// urgent-color "#ff0060"
 	}
 	focus-ring {
 		width 2
-		active-color "#00ab55"
-		inactive-color "#1c1c1c"
-		urgent-color "#ff0060"
+		// active-color "#00ab55"
+		// inactive-color "#1c1c1c"
+		// urgent-color "#ff0060"
 	}
 	tab-indicator {
 		gap 0
@@ -143,11 +148,11 @@ layout {
 
 	}
 	shadow {
-		on
-		softness 30
-		spread 5
-		offset x=0 y=5
-		color "#0007"
+		// off
+		// softness 30
+		// spread 5
+		// offset x=0 y=5
+		// color "#0007"
 	}
 }
 
@@ -176,39 +181,28 @@ window-rule {
 }
 
 window-rule {
+    match is-active=false
+    opacity 0.8
+}
+
+window-rule {
     match app-id=r#"^special*"#
     default-column-width { proportion 0.9; }
     open-on-workspace "Scratchpad"
 }
 
 window-rule {
-	match app-id="foot"
-	match app-id="footclient"
-	match title="foot"
-
-	draw-border-with-background false
-	opacity 1.0
-	shadow {
-	  on
-	  draw-behind-window true
-	  softness 0
-	  spread 0
-	  offset x=0 y=0
-	  color "#000000"
-	  inactive-color "#000000"
-	}
-}
-
-window-rule {
+    match app-id="foot"
     match app-id="ghostty"
-    match title="ghostty"
+    match app-id="kitty"
+    match app-id="wezterm"
     default-column-width {}
     open-floating true
   	draw-border-with-background false
-  	opacity 1.0
+	opacity 0.8
   	shadow {
     	on
-    	draw-behind-window true
+    	draw-behind-window false
     	softness 0
     	spread 0
     	offset x=0 y=0
@@ -218,12 +212,12 @@ window-rule {
 }
 
 window-rule {
+	match title=r#".*Authentication.*"#
     match title="Special Offers"
     match title="Friends List"
     match title="Steam Settings"
     match app-id="blueman-manager"
     match title="Bluetooth"
-    match app-id=r#"^blueberry*"#
     match app-id="org.kde.kdeconnect.app"
     match app-id="nm-connection-editor"
     match app-id="org.kde.polkit-kde-authentication-agent-1"
@@ -241,6 +235,7 @@ window-rule {
     match title="zoom"
     match title="Picture-in-Picture"
     match app-id="anki" title="Profile Name"
+	match app-id=r#"^Obsidian*"#
 
     open-floating true
     open-focused true
@@ -249,12 +244,23 @@ window-rule {
 }  
 
 window-rule {
+    match app-id=r#"firefox"#
+    match app-id=r#"google-chrome"#
+    match app-id=r#"code"#
+    match app-id=r#"obsidian$"#
+    match app-id=r#"zen$"#
+    open-maximized true
+}
+
+window-rule {
 	match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+	match app-id=r#"Bitwarden"#
 	block-out-from "screen-capture"
 }
 
 window-rule {
 	match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+	match app-id=r#"Bitwarden"#
 	block-out-from "screencast"
 }
 
