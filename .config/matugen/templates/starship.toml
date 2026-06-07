@@ -1,5 +1,8 @@
+add_newline = false
+
 format = '''
-$all$character'''
+$all
+'''
 
 palette = 'colors'
 

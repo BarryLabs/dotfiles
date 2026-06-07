@@ -1,11 +1,6 @@
-#source /usr/share/cachyos-fish-config/cachyos-config.fish
-
-# overwrite greeting
-# potentially disabling fastfetch
-#function fish_greeting
-#    # smth smth
-#end
-
-set -gx EDITOR nvim
-zoxide init fish | source
+set fish_greeting
+set -gx EDITOR hx
 direnv hook fish | source
+starship init fish | source
+zoxide init fish | source
+eval (ssh-agent -c)

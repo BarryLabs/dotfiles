@@ -1,7 +1,7 @@
 # Vars
 EDITOR="hx"
 VISUAL="hx"
-TERMINAL="foot"
+TERMINAL="ghostty"
 
 # Multi-Color
 color_prompt=yes
