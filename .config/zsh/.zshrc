@@ -47,3 +47,4 @@ add-zsh-hook precmd _load_ssh_agent
 # Stuff
 eval "$(devenv hook zsh)"
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"

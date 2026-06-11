@@ -5,3 +5,13 @@ show_hidden = true
 show_symlink = true
 linemode = "mtime"
 ratio = [1, 4, 3]
+
+# [opener]
+# pdff = [
+# 	{ run = 'zathura "$@"', desc = "zathura", block = true, for = "unix" },
+# ]
+
+# [open]
+# rules = [
+#   { mime = "application/pdf", use = [ "pdff", "reveal" ] },
+# ]
